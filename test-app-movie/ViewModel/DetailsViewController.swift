@@ -30,15 +30,21 @@ class DetailsViewController: UIViewController {
         self.directorsLabel.text = "By: "
         if let comp = movie.production_companies {
             for c in comp {
-                self.directorsLabel.text?.append(c.name)
+                self.directorsLabel.text?.append("\(c.name) ")
             }
+        }else {
+            self.directorsLabel.text?.append("Unknown company")
         }
         
         
-        self.relDateLabel.text = "Release date: \(movie.release_date)"
-        if let genr = movie.genre_ids {
+        self.relDateLabel.text = "Release date: "
+        self.relDateLabel.text?.append("\(movie.release_date ?? "Unknown")")
+        
+        self.genresLabel.text = "Genre: "
+        if let genr = movie.genres {
             for g in genr {
-                self.genresLabel.text?.append("\(Utilities.genres[g]!) ")
+                print(g)
+                self.genresLabel.text?.append("\(g.name) ")
             }
         }
         guard let path = movie.poster_path else {

@@ -12,8 +12,8 @@ class Storage {
     static let shared = Storage()
     var movies = [Movie]()
     
-    func getMovies(name: String?, id: Int?, completion: @escaping (Bool) -> ()){
-        Client.get(name: name, id: id) { (res) in
+    func getMovies(name: String?, id: Int?, url: URL?, completion: @escaping (Bool) -> ()){
+        Client.get(name: name, id: id, url: url) { (res) in
             for m in res {
                 self.movies.append(m)
             }

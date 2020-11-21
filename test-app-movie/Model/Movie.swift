@@ -13,12 +13,13 @@ struct Movies: Codable {
 }
 
 class Movie: Codable {
-    let title: String
+    let title: String?
     let poster_path: String?
-    let overview: String
-    let release_date: String
+    let overview: String?
+    let release_date: String?
     let production_companies: [Company]?
     let genre_ids: [Int]?
+    let genres: [Genre]?
     let id: Int
     
     init() {
@@ -29,9 +30,14 @@ class Movie: Codable {
         production_companies =  [Company]()
         genre_ids = [14,28]
         id = 590706
+        genres = [Genre]()
     }
 }
 
 struct Company: Codable {
+    let name: String
+}
+
+struct Genre : Codable{
     let name: String
 }
