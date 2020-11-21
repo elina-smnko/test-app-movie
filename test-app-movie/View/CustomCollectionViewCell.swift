@@ -17,7 +17,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     var movie: Movie? {
            didSet {
             self.titleLabel.text = movie?.title
-            self.descriptionLabel.text? = movie?.overview ?? "Short description"
+            self.descriptionLabel.text? = movie?.overview?.substring(to: (movie?.overview?.firstIndex(of: "."))!) ?? "Short description"
             guard let path = movie?.poster_path else {
                 return
             }
